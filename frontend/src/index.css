@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* JalRakshak AI Design System - Water Harvesting Theme */
+
+@layer base {
+  :root {
+    /* Water-themed color palette */
+    --background: 220 20% 97%;
+    --foreground: 210 40% 8%;
+
+    --card: 210 30% 99%;
+    --card-foreground: 210 40% 8%;
+
+    --popover: 210 30% 99%;
+    --popover-foreground: 210 40% 8%;
+
+    /* Ocean blue primary palette */
+    --primary: 200 95% 45%;
+    --primary-foreground: 210 20% 98%;
+    --primary-light: 200 85% 65%;
+    --primary-dark: 200 100% 35%;
+
+    /* Aqua secondary palette */
+    --secondary: 180 60% 85%;
+    --secondary-foreground: 200 50% 20%;
+
+    --muted: 210 30% 92%;
+    --muted-foreground: 210 20% 45%;
+
+    /* Teal accent */
+    --accent: 175 70% 55%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 210 30% 88%;
+    --input: 210 30% 95%;
+    --ring: 200 95% 45%;
+
+    --radius: 0.75rem;
+
+    /* Water-themed custom colors */
+    --water-blue: 200 95% 45%;
+    --water-light: 190 80% 70%;
+    --water-dark: 210 100% 30%;
+    --aqua: 175 70% 55%;
+    --deep-blue: 220 90% 25%;
+    --sky-blue: 200 70% 80%;
+
+    /* Gradients */
+    --gradient-water: linear-gradient(135deg, hsl(var(--water-blue)), hsl(var(--aqua)));
+    --gradient-ocean: linear-gradient(180deg, hsl(var(--water-light)), hsl(var(--water-dark)));
+    --gradient-sky: linear-gradient(to bottom, hsl(var(--sky-blue)), hsl(var(--water-light)));
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--aqua)) 50%, hsl(var(--water-light)) 100%);
+
+    /* Shadows */
+    --shadow-water: 0 10px 40px -10px hsl(var(--water-blue) / 0.3);
+    --shadow-soft: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+    --shadow-glow: 0 0 30px hsl(var(--aqua) / 0.4);
+
+    /* Animations */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .dark {
+    --background: 210 50% 5%;
+    --foreground: 210 20% 98%;
+
+    --card: 210 50% 8%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 210 50% 8%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 200 95% 55%;
+    --primary-foreground: 210 50% 5%;
+
+    --secondary: 210 40% 15%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 210 40% 15%;
+    --muted-foreground: 210 20% 65%;
+
+    --accent: 175 70% 45%;
+    --accent-foreground: 210 20% 98%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 210 40% 18%;
+    --input: 210 40% 18%;
+    --ring: 200 95% 55%;
+
+    --water-blue: 200 95% 55%;
+    --water-light: 190 80% 60%;
+    --water-dark: 210 100% 40%;
+    --aqua: 175 70% 45%;
+    --deep-blue: 220 90% 35%;
+    --sky-blue: 200 70% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Water animations */
+  .water-drop {
+    @apply animate-bounce;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+
+  .wave-animation {
+    background: linear-gradient(-45deg, 
+      hsl(var(--water-blue)), 
+      hsl(var(--aqua)), 
+      hsl(var(--water-light)), 
+      hsl(var(--primary)));
+    background-size: 400% 400%;
+    animation: wave 8s ease-in-out infinite;
+  }
+
+  .ripple-effect {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ripple-effect::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: hsl(var(--aqua) / 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+
+  .ripple-effect:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* Glass morphism effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Water fill animation */
+  .water-fill {
+    background: var(--gradient-ocean);
+    border-radius: 0 0 50% 50%;
+    animation: fill 2s ease-out forwards;
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fill {
+  from {
+    height: 0%;
+  }
+  to {
+    height: var(--fill-height, 50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes droplet {
+  0% {
+    transform: translateY(-20px) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes water-rise {
+  0% {
+    height: 0%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+
+@keyframes bubble-up {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes leaf-grow {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
